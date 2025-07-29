@@ -27,6 +27,7 @@
      * @param {Object} options - 設定オプション
      * @param {string} options.api_key - Dify API キー
      * @param {string} [options.base_url] - ベースURL（デフォルト: https://api.dify.ai/v1）
+     *                                     セルフホスト版の場合: https://your-instance.com/v1
      */
     function Dify(options) {
         if (!(this instanceof Dify)) {
@@ -35,7 +36,7 @@
 
         this.config = {
             api_key: options.api_key,
-            base_url: options.base_url || 'https://api.dify.ai/v1'
+            base_url: options.base_url || 'https://api.dify.ai/v1'  // クラウド版デフォルト、セルフホスト版は要設定
         };
 
         if (!this.config.api_key) {

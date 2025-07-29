@@ -41,6 +41,7 @@ This is a lightweight, browser-compatible JavaScript library for interacting wit
 
 #### 2. Initialize the Client
 
+**For Dify Cloud (Default):**
 ```javascript
 // Replace 'your_api_key_here' with your actual Dify API key
 const dify = new Dify({
@@ -48,11 +49,25 @@ const dify = new Dify({
 });
 ```
 
+**For Self-hosted Dify:**
+```javascript
+// Replace with your self-hosted Dify instance URL
+const dify = new Dify({
+    api_key: 'your_api_key_here',
+    base_url: 'https://your-dify-instance.com/v1'  // Your self-hosted URL
+});
+```
+
 **🔑 How to get your API key:**
-1. Go to your Dify dashboard
+1. Go to your Dify dashboard (cloud or self-hosted)
 2. Navigate to your app settings
 3. Find the "API Access" section
 4. Copy your API key
+
+**🏠 Self-hosted setup:**
+- Replace `https://your-dify-instance.com/v1` with your actual Dify instance URL
+- Make sure to include `/v1` at the end of your base URL
+- Ensure your Dify instance is accessible from your application
 
 #### 3. Your First Chat Message
 
@@ -107,6 +122,7 @@ Here's a complete working example you can copy and paste:
         // Initialize Dify client
         const dify = new Dify({
             api_key: 'your_api_key_here'  // Replace with your actual API key
+            // For self-hosted Dify, add: base_url: 'https://your-dify-instance.com/v1'
         });
 
         function addMessage(message, isUser) {
@@ -232,7 +248,8 @@ dify.runWorkflow({
 
 ##### `new Dify(options)`
 - `options.api_key` (string, required): Your Dify API key
-- `options.base_url` (string, optional): Custom API base URL
+- `options.base_url` (string, optional): Custom API base URL. Default: `https://api.dify.ai/v1`
+  - For self-hosted Dify: Use your instance URL + `/v1` (e.g., `https://your-dify.com/v1`)
 
 ##### `sendChatMessage(options, onMessage, onError, onComplete)`
 - `options.query` (string, required): User's message
@@ -320,6 +337,7 @@ DifyのChat APIとWorkflow APIを簡単に使えるJavaScriptライブラリで�
 
 #### 2. クライアントを初期化
 
+**Difyクラウド版（デフォルト）:**
 ```javascript
 // 'your_api_key_here'を実際のDify APIキーに置き換えてください
 const dify = new Dify({
@@ -327,11 +345,25 @@ const dify = new Dify({
 });
 ```
 
+**セルフホスト版Dify:**
+```javascript
+// セルフホストしているDifyインスタンスのURLに置き換えてください
+const dify = new Dify({
+    api_key: 'your_api_key_here',
+    base_url: 'https://your-dify-instance.com/v1'  // セルフホスト版のURL
+});
+```
+
 **🔑 APIキーの取得方法：**
-1. Difyダッシュボードにアクセス
+1. Difyダッシュボードにアクセス（クラウド版またはセルフホスト版）
 2. アプリ設定に移動
 3. 「API アクセス」セクションを見つける
 4. APIキーをコピー
+
+**🏠 セルフホスト版の設定:**
+- `https://your-dify-instance.com/v1`を実際のDifyインスタンスのURLに置き換えてください
+- ベースURLの末尾に必ず`/v1`を含めてください
+- アプリケーションからDifyインスタンスにアクセスできることを確認してください
 
 #### 3. 最初のチャットメッセージ
 
@@ -386,6 +418,7 @@ dify.sendChatMessage({
         // Difyクライアントを初期化
         const dify = new Dify({
             api_key: 'your_api_key_here'  // 実際のAPIキーに置き換えてください
+            // セルフホスト版の場合、追加: base_url: 'https://your-dify-instance.com/v1'
         });
 
         function addMessage(message, isUser) {
@@ -511,7 +544,8 @@ dify.runWorkflow({
 
 ##### `new Dify(options)`
 - `options.api_key` (string, 必須): Dify APIキー
-- `options.base_url` (string, オプション): カスタムAPIベースURL
+- `options.base_url` (string, オプション): カスタムAPIベースURL。デフォルト: `https://api.dify.ai/v1`
+  - セルフホスト版の場合: インスタンスURL + `/v1` を使用（例: `https://your-dify.com/v1`）
 
 ##### `sendChatMessage(options, onMessage, onError, onComplete)`
 - `options.query` (string, 必須): ユーザーのメッセージ
@@ -575,6 +609,9 @@ A: はい、Difyの設定によりますが、通常は15MBまでです。詳細
 
 **Q: エラーが発生した場合はどうすればよいですか？**
 A: ブラウザの開発者ツール（F12）でコンソールを確認し、エラーメッセージを読んでください。APIキー、ネットワーク接続、リクエスト形式を確認してください。
+
+**Q: セルフホスト版のDifyで使用できますか？**
+A: はい、初期化時に`base_url`オプションでセルフホストインスタンスのURLを指定してください。例: `base_url: 'https://your-dify.com/v1'`
 
 ### ライセンス
 
